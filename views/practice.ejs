@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href='/css/practice.css'>
+</head>
+<body>
+    <header>
+        <h1><i class="far fa-address-book"></i> My Contacts App</h1>
+    </header>
+
+    <div class = "container">
+        <ul>
+            <% for(let contact of contact_list) { %>
+                <li class = "list-item">
+                    <div class = "delete-btn-container">
+                        <a href = "/delete-contact/?id=<%= contact._id %>"  class = "delete-btn"><i class = "fas fa-times"></i></a>
+                    </div>
+                    <div class = "contact-details">
+                        <p> <%= contact.name %> </p>
+                        <p> <%= contact.phone %> </p> 
+                    </div>
+                </li>
+            <% } %>  
+        </ul>
+
+        <form class = "myform" action = "/create-contact" method = "POST">
+
+            <input type = "text" name = "name" placeholder="Enter name" required>
+
+
+            <input type="number" name = "phone" placeholder="Enter Phone No." required>
+
+
+            <button type = "submit">Add</button>
+
+        </form>
+    </div>
+
+    <script src = '/js/practice.js'></script>
+</body>
+</html>
